@@ -1,25 +1,29 @@
-fetch(`/plugins/template/news.html?t=${Date.now()}`)
-  .then(response => response.text())
-  .then(html => {
+fetch('news.json?t=' + Date.now())
+  .then(response => response.json())
+  .then(news => {
     const container = document.getElementById('news');
-    container.innerHTML = html;
 
-    container.querySelectorAll('details').forEach(details => {
-      details.open = true;
+    let html = '';
+    let currentYear = null;
 
-      const summary = details.querySelector('summary');
-      if (summary) {
-        summary.remove();
+    news.forEach(item => {
+      if (item.year !== currentYear) {
+        currentYear = item.year;
+        html += `<h1><u>${currentYear}</u></h1>`;
       }
 
-      const parent = details.parentNode;
-      while (details.firstChild) {
-        parent.insertBefore(details.firstChild, details);
-      }
-
-      parent.removeChild(details);
+      html += `
+        <h2>Entry ${item.entry} (${item.date})</h2>
+        <ul>
+          ${item.content.map(text => `<li>${text}</li>`).join('')}
+        </ul>
+      `;
     });
+
+    container.innerHTML = html;
   })
   .catch(error => {
-    console.error('Error loading template:', error);
+    document.getElementById('news').innerHTML =
+      '<p>Impossible de charger les actualités.</p>';
+    console.error(error);
   });
