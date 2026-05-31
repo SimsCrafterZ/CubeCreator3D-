@@ -24,6 +24,6 @@ fetch('news.json?t=' + Date.now())
   })
   .catch(error => {
     document.getElementById('news').innerHTML =
-      '<p>Impossible de charger les actualités.</p>';
+      '<p>Unable to load news.</p>';
     console.error(error);
   });
