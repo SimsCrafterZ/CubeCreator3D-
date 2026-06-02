@@ -3,237 +3,489 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <meta property="og:title" content="Minecraft 3DS Community" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.minecraft3ds.org/" />
-  <meta property="og:image" content="https://raw.githubusercontent.com/Minecraft-3DS-Community/Minecraft-3DS-Community.github.io/refs/heads/main/seeds/img/noimg.png" />
-
   <meta name="description" content="The one-stop shop for everything related to Minecraft: New Nintendo 3DS Edition." />
-
-  <title>Home • Cube Creator 3D Community</title>
-
+  <meta property="og:image" content="https://raw.githubusercontent.com/Minecraft-3DS-Community/Minecraft-3DS-Community.github.io/refs/heads/main/seeds/img/noimg.png" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://www.minecraft3ds.org/" />
+  <meta property="twitter:title" content="Minecraft 3DS Community" />
+  <meta property="twitter:description" content="The one-stop shop for everything related to Minecraft: New Nintendo 3DS Edition." />
+  <meta property="twitter:image" content="https://raw.githubusercontent.com/Minecraft-3DS-Community/Minecraft-3DS-Community.github.io/refs/heads/main/seeds/img/noimg.png" />
   <link href="style.css" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-  <link rel="stylesheet" href="plugins/flickity/flickity.css">
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico?">
+  <link rel="stylesheet" href="plugins/flickity/flickity.css" media="screen">
   <script src="plugins/flickity/flickity.pkgd.js"></script>
-
+  <title>Home &#8226 Cube Creator 3D Community</title>
   <style>
-    body {
-      margin: 0;
-      background-color: #825a21;
-    }
-
     .header {
+      overflow: visible;
+    }
+    #vines {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 3.5em;
-      display: flex;
-      align-items: center;
+      height: 100%;
+      pointer-events: none;
     }
-
-    .layout {
-      display: flex;
-      margin-top: 60px;
+    .gallery-cell {
+      border: 2px solid white;
     }
-
-    .main {
-      flex: 1;
-      padding: 16px;
+    .flickity-viewport {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      will-change: transform;
     }
+    /* wyndchyme was here. The above is a fix for a stupid Flickity bug on Safari. Don't touch it. */
+        body {
+        margin: 0;
+      }
 
-    .sidebar {
-      flex: 0 0 30%;
-      height: calc(100vh - 50px);
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url(img/bg/stone.png);
-      background-size: 32px;
+      .layout {
+        display: flex;
+        margin: 0 auto;
+      }
+
+      .textLayout {
+        display: flex;
+        position: relative;
+        top: 15px;
+        padding: 10px;
+        background-color: rgb(50, 54, 81);
+        border: 2px solid rgb(24, 25, 31);
+        outline: 2px solid rgb(50, 54, 81);
+        gap: 15px;
+        font-family: 'Minecraft Regular';
+        color: white;
+        font-size: 14pt !important;
+        overflow-y: scroll;
+        max-height: fit-content;
+        padding-bottom: 50px;
+      }
+
+      .sidebar {
+        flex: 0 0 30%;
+        margin-top: 50px;
+        height: calc(100vh - 50px);
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url(img/bg/stone.png);
+        background-size: 32px;
+        image-rendering: pixelated;
+        filter: drop-shadow(-6px 0 0 rgba(0, 0, 0, 0.5));
+      }
+
+      .main {
+        flex: 1;
+        padding: 16px;
+        margin-top: 100px;
+        height: calc(100vh - 100px);
+      }
+
+      .textSidebar {
+        flex: 0 0 40%;
+        background-color: rgb(78, 85, 105);
+        border: 2px solid rgba(13, 13, 13, 0.7);
+        outline: 2px solid rgb(128, 128, 130);
+        height: 100%;
+        overflow-y: scroll;
+        max-height: 450px;
+        position: relative;
+        top: 2px;
+        min-height: 300px;
+      }
+
+      .textSidebar {
+        .boxHeader {
+          background-color: rgb(138, 143, 155);
+          padding: 10px;
+          border-bottom: 4px solid rgb(42, 43, 47);
+          filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+        }
+      }
+
+      .textMain {
+        max-height: 450px;
+        height: 100%;
+        flex: 1;
+        border: 2px solid black;
+        outline: 2px solid rgb(128, 128, 130);
+        padding: 8px;
+        background-color: rgb(34, 35, 39);
+        position: relative;
+        left: 4px;
+        top: 2px;
+        overflow-y: scroll;
+        min-height: 300px;
+      }
+
+      .textMain iframe {
+        height: 100%;
+        max-height: calc(100% - 50px);
+        box-sizing: border-box;
+        display: block;
+        max-width: calc(100% - 20px);
+        margin: 20px;
+        margin-bottom: 10px;
+        justify-self: center;
+        margin-top: 14px;
+        border: 8px solid rgb(21, 22, 24);
+        max-width: 90%;
+      }
+
+      .boxHeader {
+        font-size: 16pt;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .boxHeader img {
+        filter: drop-shadow(-2px 2px 0 black);
+      }
+
+      .didYouKnow {
+        margin: 12px;
+        margin-right: 16px;
+        line-height: 1.5;
+        font-size: 18pt;
+      }
+
+      @media (max-width: 1250px) {
+        .didYouKnow {
+          font-size: 16pt !important;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .copyright {
+          font-size: 10pt;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .copyright {
+          display: none;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .didYouKnow {
+          font-size: 12pt !important;
+        }
+
+        .layout {
+          flex-direction: column;
+        }
+
+        .sidebar {
+          order: 2;
+          flex: none;
+          margin: 20px;
+          height: 300px;
+          border: 4px solid transparent;
+          outline: 2px solid rgba(255, 255, 255, 0.25);
+          filter: drop-shadow(0 6px 0 rgba(0, 0, 0, 0.5));
+        }
+
+        .main {
+          order: 1;
+        }
+
+        .textLayout {
+          flex-direction: column;
+        }
+
+        .textSidebar {
+          order: 2;
+          flex: none;
+          margin-right: 10px;
+          height: 250px;
+        }
+
+        .textMain {
+          order: 1;
+          margin-right: 10px;
+          min-height: 300px;
+        }
+
+        .textMain iframe {
+          min-height: 260px;
+        }
+
+        .didYouKnow {
+          font-size: 16pt !important;
+        }
+
+        .newsHeader {
+          padding-top: 7px !important;
+        }
+        .text {
+          margin-top: 625px !important;
+          margin: 25px;
+          padding-bottom: 40px;
+          max-width: 100% !important;
+        }
+        #news {
+          font-size: 12pt !important;
+        }
+      }
+      gallerysubtitle {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        font-family: 'Minecraft Regular';
+      }
+
+      gallerysubtitle a {
+          text-decoration: none;
+      }
+
+      gallerysubtitle a:hover {
+          text-decoration: underline;
+      }
+
+    * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
     }
 
     .gallery-cell {
-      width: 250px;
-      height: 150px;
-      margin-right: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: skyblue;
-      border: 2px solid white;
+        margin-right: 10px;
+        background: skyblue;
+        counter-increment: gallery-cell;
+            width: 250px;
+            height: 150px;
+            margin-right: 10px;
+            display: flex;
+            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #fff;
     }
 
-    .gallerysubtitle {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
+    .gallery-cell:before {
+        display: block;
+        text-align: center;
+        content: none;
+        line-height: 200px;
+        font-size: 80px;
+        color: white;
+    }
+
+    .flickity-page-dots .dot {
+        width: 11px;
+        height: 11px;
+        opacity: 1;
+        background: skyblue !important;
+        transition: 0.5s;
+        border-radius: 0 !important;
+    }
+
+    .flickity-page-dots .dot.dot.is-selected {
+        background: teal !important;
+        transition: 0.5s;
+    }
+
+    .logoCell:hover {
+        cursor: pointer;
+    }
+    h1 {
       font-family: 'Minecraft Regular';
     }
-
-    .gallerysubtitle a {
-      color: white;
-      text-decoration: none;
-    }
-
-    .gallerysubtitle a:hover {
-      text-decoration: underline;
-    }
-
-    .text {
-      margin: 25px;
-      max-width: 66%;
-      position: absolute;
-      margin-top: 320px;
-    }
-
-    .overview {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px;
-      background: rgb(94,94,99);
-      color: white;
-      font-family: 'Minecraft Regular';
-    }
-
-    .textLayout {
-      display: flex;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .textMain {
-      flex: 1;
-      background: rgb(34,35,39);
-      padding: 10px;
-      color: white;
-    }
-
-    .textSidebar {
-      width: 40%;
-      background: rgb(78,85,105);
-      padding: 10px;
-      color: white;
-    }
-
-    .boxHeader {
-      font-family: 'Minecraft Regular';
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 16pt;
-    }
-
-    .didYouKnow {
-      margin-top: 10px;
-    }
-
     .newsHeader {
       font-family: 'Minecraft Regular';
+      font-size: 20pt;
+      display: flex;
+      gap: 10px;
+      background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.4)), url(img/bg/stone_bricks.png);
+      background-size: 32px;
       padding: 10px;
-      background: url(img/bg/stone_bricks.png);
-      color: white;
+      padding-top: 15px;
+      border-bottom: 4px solid rgba(36, 36, 36, 0.7);
+      filter: drop-shadow(0 6px 0 rgb(23, 23, 23));
     }
-
+    .newsHeader img {
+      height: 32px;
+      width: 32px;
+    }
     #news {
-      padding: 10px;
-      font-family: 'Minecraft Regular';
-      color: #ccc;
+      height: calc(100% - 75px);
       overflow-y: scroll;
-      height: 100%;
+      font-family: 'Minecraft Regular';
+      font-size: 14pt;
+      padding: 10px;
+      padding-top: 0;
+      padding-left: 12px;
+      color: rgba(185, 185, 185, 0.9);
+    }
+    .news {
+      margin-left: 20px;
+      margin-right: 15px;
+    }
+    #news h1 {
+      color: rgb(224, 243, 255);
+      font-weight: normal !important;
     }
 
+    #news h2 {
+        font-size: 15pt;
+        color: white;
+        text-decoration: underline;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding-bottom: 5px;
+        padding-left: 5px;
+        font-weight: normal !important;
+    }
+
+    #news a {
+        color: rgb(184, 229, 255);
+    }
+
+    #news a:hover {
+        color: rgb(112, 183, 225);
+    }
+    .text {
+      position: absolute;
+      margin: 25px;
+      margin-top: 320px;
+      max-width: 66%;
+    }
+    .overview {
+      display: flex;
+      font-family: 'Minecraft Regular';
+      font-size: 15pt;
+      color: white;
+      align-items: center;
+      gap: 15px;
+      line-height: 1.5;
+      background-color: rgb(94, 94, 99);
+      padding: 10px;
+      border: 2px solid rgb(24, 25, 31);
+      outline: 2px solid rgb(94, 94, 99);
+    }
+    .overview img {
+      width: 28px;
+      height: 28px;
+      filter: drop-shadow(1px 0 0 rgba(0, 0, 0, 0.2)) drop-shadow(-1px 0 0 rgba(0, 0, 0, 0.2)) drop-shadow(0 1px 0 rgba(0, 0, 0, 0.2)) drop-shadow(0 -1px 0 rgba(0, 0, 0, 0.2));
+    }
     .copyright {
       position: absolute;
-      bottom: 0;
-      width: 100%;
-      text-align: center;
-      background: black;
-      color: rgba(255,255,255,0.5);
-      padding: 8px;
       font-family: 'Minecraft Regular';
+      background-color: rgb(12, 14, 15);
+      bottom: 0px;
+      padding: 8px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+      width: 100%;
+    }
+    @media (max-height: 800px) {
+      .copyright {
+      display: none; 
+      }
     }
   </style>
 </head>
-
 <body>
+      <div style="position: absolute; top: 0; left: 0; width: 100vw; height: 3.5em; display: flex; align-items: center;" class="header">
+        <a href="/" style="text-indent: 1rem;">
+            <span style="color: white; font-size: 20pt; filter: drop-shadow(0 3px 3px black); margin-left: 45px;" class="logo">
+                <img src="img/New_Nintendo_3DS_Edition.webp" style="width: 180px; vertical-align: middle; position: relative; bottom: -10px; image-rendering: auto;">
+                <span style="
+position:absolute;
+left:150px;
+top:30px;
+display:inline-block;
+color:yellow;
+transform-origin:left;
+transform:scale(0.65) rotate(-15deg);
+animation:scaleText 2s ease-in-out infinite;
+text-shadow:2px 2px 2px black;
+">
+    Community
+</span>
+            </span>
+        </a>
+    
+        <div id="vines" class="vines">
+        </div>
 
-<div class="header">
-  <a href="/">
-    <img src="img/New_Nintendo_3DS_Edition.webp" style="width:180px;">
-  </a>
-</div>
+        <div class="vines" id="leftVines">
+          <img src="img/bg/vine.png" style="width: 32px; position: absolute; left: 32px; top: 0;">
+          <img src="img/bg/vine.png" style="width: 32px; position: absolute; left: 32px; top: 32px;">
+        </div>
+        <!--wyndchyme was here. These left vines will only appear on smaller video widths.-->
+    </div>
+    
+    
+    <div class="layout">
+      <main class="main">
+              <div class="gallery js-flickity" data-flickity-options='{"autoPlay": 3500, "wrapAround": true}' style="filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));">
+            <div class="gallery-cell" style="background-color: rgb(74, 110, 157);">
+              <img src="img/logos/unistore.png" style="width:200px; position: relative; filter: drop-shadow(0 1px 1px black);" onclick="window.location.href='/unistore/';" class="logoCell">
+            </div>
+            <div class="gallery-cell">
+              <img src="img/news/featured/cubecreator3dminecraft.jpg" style="width: 500px; position: relative;">
+              <div style="background-color: rgba(21, 40, 70, 0.5); position: absolute; padding-left: 300px; padding-bottom: 20px; bottom: 0;">IO</div>
+              <gallerysubtitle><a href="https://github.com/Axonic3D/CC3D-Minecraft-Conversion-Mod" style="color: white;">Cube Creator 3D: Minecraft Conversion Mod</a></gallerysubtitle>
+            </div>
+           
 
-<div class="layout">
+      </main>
 
-  <main class="main">
+      <div class="text">
+        <div class="overview"><img src="/img/gui/home.png">Welcome to the official Cube Creator 3D Community website, the hub for mods, tutorials, and FAQs.</div>
+        <div class="textLayout">
+          <div class="textMain">
+            <span class="boxHeader"><img src="/img/gui/oreui/worlds.png"> Featured Video</span>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Lluw07pKd60&utm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
 
-    <div class="gallery js-flickity" data-flickity-options='{"autoPlay": 3500, "wrapAround": true}'>
-
-      <div class="gallery-cell">
-        <img src="img/logos/unistore.png" style="width:200px;" onclick="window.location.href='/unistore/';">
-      </div>
-
-      <div class="gallery-cell">
-        <img src="img/news/featured/cubecreator3dminecraft.jpg" style="width:500px;">
-        <div class="gallerysubtitle">
-          <a href="https://github.com/Axonic3D/CC3D-Minecraft-Conversion-Mod">
-            Cube Creator 3D: Minecraft Conversion Mod
-          </a>
+          <div class="textSidebar">
+            <span class="boxHeader"><img src="/img/gui/oreui/other.png"> Did you know?</span>
+            <div class="didYouKnow">
+            <i>Cube Creator 3D</i> was released on April 23, 2015.
+            </div>
+            
+          </div>
         </div>
       </div>
 
+      <aside class="sidebar">
+        <div class="newsHeader"><img src="/img/gui/oreui/resourcepacks.png">Latest News</div>
+        <div id="news"></div>
+      </aside>
+
+      <div class="copyright">© 2026 Cube Creator 3D Community. All Rights Reserved.</div>
     </div>
 
-  </main>
+<script src="scripts/main/dropdown.js"></script>
+<script src="scripts/main/news.js"></script>
+<script src="scripts/main/vines.js"></script>
+<script src="/scripts/main/header.js"></script>
+<script src="/scripts/main/fixTextLayoutHeight.js"></script>
+<script>
+  // To fix Flickity bug on Safari
+  document.addEventListener("DOMContentLoaded", function () {
+    var flkty = new Flickity('.carousel', {
+      cellAlign: 'left',
+      contain: true,
+      wrapAround: true
+    });
 
-  <aside class="sidebar">
-    <div class="newsHeader">Latest News</div>
-    <div id="news"></div>
-  </aside>
+    var carouselElement = document.querySelector('.carousel');
+    carouselElement.style.transition = 'transform 0.1ms ease'; 
 
-</div>
+    setInterval(function () {
+      carouselElement.style.transform = 'translate3d(0, 0, 0)';
+    }, 1000);
+  });
+</script>
 
-<div class="text">
 
-  <div class="overview">
-    <img src="/img/gui/home.png" width="24">
-    Welcome to the Cube Creator 3D Community website.
-  </div>
 
-  <div class="textLayout">
 
-    <div class="textMain">
-      <div class="boxHeader">
-        <img src="/img/gui/oreui/worlds.png" width="24">
-        Featured Video
-      </div>
 
-      <iframe width="560" height="315"
-        src="https://www.youtube-nocookie.com/embed/Lluw07pKd60"
-        allowfullscreen>
-      </iframe>
-    </div>
-
-    <div class="textSidebar">
-      <div class="boxHeader">
-        <img src="/img/gui/oreui/other.png" width="24">
-        Did you know?
-      </div>
-
-      <div class="didYouKnow">
-        Cube Creator 3D was released on April 23, 2015.
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="copyright">
-  © 2026 Cube Creator 3D Community. All Rights Reserved.
-</div>
 
 </body>
 </html>
-
-  
